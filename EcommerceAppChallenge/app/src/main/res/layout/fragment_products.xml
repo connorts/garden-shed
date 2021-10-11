@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="productsViewModel"
+            type="com.example.ecommerceappchallenge.viewmodel.products.ProductsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/green">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frame_layout_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_view_title_banner"
+                android:contentDescription="Garden Shed logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:elevation="8dp"
+                android:maxWidth="150dp"
+                android:maxHeight="80dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/logo_gardenshed_cropped"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_toolbar_products"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/green"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/edit_text_search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent_grey"
+                android:layout_margin="8dp"
+                android:hint="Search Products..."
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/image_view_title_banner"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ToggleButton
+            android:id="@+id/button_search"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_margin="16dp"
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/ic_search_24"
+            android:backgroundTint="@color/yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/frame_layout_products"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/gradient_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/category_all"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/product_category_view"
+                        android:onClick="@{()->productsViewModel.filterByAll()}">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:gravity="center"
+                            android:text="All Products"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/category_mens_clothing"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/product_category_view"
+                        android:onClick="@{()->productsViewModel.filterByMensClothing()}">
+
+                        <ImageView
+                            android:id="@+id/image_view_mens_clothing"
+                            android:contentDescription="Men's clothing image"
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/mens_clothing"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:gravity="center"
+                            android:text="Men's Clothing"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/image_view_mens_clothing"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/category_womens_clothing"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/product_category_view"
+                        android:onClick="@{()->productsViewModel.filterByWomensClothing()}">
+
+                        <ImageView
+                            android:id="@+id/image_view_womens_clothing"
+                            android:contentDescription="Women's clothing image"
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/womens_clothing"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Women's Clothing"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/image_view_womens_clothing" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/category_jewelry"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/product_category_view"
+                        android:onClick="@{()->productsViewModel.filterByJewelery()}">
+
+                        <ImageView
+                            android:id="@+id/image_view_jewelry"
+                            android:contentDescription="Jewelery image"
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/jewelry"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Jewelry"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/image_view_jewelry" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/category_electronics"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/product_category_view"
+                        android:onClick="@{()->productsViewModel.filterByElectronics()}">
+
+                        <ImageView
+                            android:id="@+id/image_view_electronics"
+                            android:contentDescription="Electronics image"
+                            android:layout_width="90dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/electronics"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Electronics"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/image_view_electronics" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_scroll_view" />
+
+            <ProgressBar
+                android:id="@+id/progress_circular_products"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:indeterminateTint="@color/yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="250dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="profileViewModel"
+            type="com.example.ecommerceappchallenge.viewmodel.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_image_view_profile_picture"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@{profileViewModel.profile.photo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_add_profile_photo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ic_add_a_photo_24"
+            android:onClick="@{()->profileViewModel.onAddProfilePhotoClicked()}"
+            app:layout_constraintBottom_toBottomOf="@id/circle_image_view_profile_picture"
+            app:layout_constraintEnd_toEndOf="@id/circle_image_view_profile_picture" />
+
+        <TextView
+            android:id="@+id/text_view_user_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@{profileViewModel.profile.firstName+' '+profileViewModel.profile.lastName}"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/circle_image_view_profile_picture" />
+
+        <TextView
+            android:id="@+id/text_view_contact_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Contact Info:"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_user_full_name" />
+
+        <TextView
+            android:id="@+id/text_view_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={profileViewModel.profile.email}"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_contact_info" />
+
+        <Button
+            android:id="@+id/button_edit_email"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_edit_24"
+            android:onClick="@{()->profileViewModel.onEditEmailClicked()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_user_email" />
+
+        <TextView
+            android:id="@+id/text_view_user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={profileViewModel.profile.phone}"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_user_email" />
+
+        <Button
+            android:id="@+id/button_edit_phone"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_edit_24"
+            android:onClick="@{()->profileViewModel.onEditPhoneClicked()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_user_phone" />
+
+        <TextView
+            android:id="@+id/text_view_address_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Shipping Address:"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_user_phone" />
+
+        <TextView
+            android:id="@+id/text_view_user_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={profileViewModel.profile.address}"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_address_label" />
+
+        <Button
+            android:id="@+id/button_edit_address"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_edit_24"
+            android:onClick="@{()->profileViewModel.onEditAddressClicked()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_user_address" />
+
+        <Button
+            android:id="@+id/button_update_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:onClick="@{()->profileViewModel.onUpdateProfileClicked()}"
+            android:text="This isn't me..."
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_user_address" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

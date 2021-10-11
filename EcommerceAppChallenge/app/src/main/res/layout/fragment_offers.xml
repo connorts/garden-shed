@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="offersViewModel"
+            type="com.example.ecommerceappchallenge.viewmodel.offers.OffersViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/text_view_offers_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deal of the Day"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_deal_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00:00:00 left for this deal!"
+            android:textColor="@color/red"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_offers_title" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/button_add_deal_to_cart"
+            app:layout_constraintTop_toBottomOf="@id/text_view_deal_countdown">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_view_deal_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:contentDescription="Daily Deal Image"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{offersViewModel.offer.image}"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_deal_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{offersViewModel.offer.title}"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@id/image_view_deal_image" />
+
+                <TextView
+                    android:id="@+id/text_view_was_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="was:"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_deal_title" />
+
+                <TextView
+                    android:id="@+id/text_view_deal_orig_price"
+                    currency="@{offersViewModel.offer.price}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_was_label" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/text_view_now_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="now:"
+                    android:textColor="@color/yellow"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/guideline_center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/text_view_was_label" />
+
+                <TextView
+                    android:id="@+id/text_view_deal_new_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$X.XX"
+                    android:textColor="@color/yellow"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/guideline_center_vertical"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_now_label" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    app:ratingDouble="@{offersViewModel.offer.rating.rate}"
+                    android:stepSize="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_deal_orig_price" />
+
+                <TextView
+                    android:id="@+id/text_view_rating_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@{String.valueOf(offersViewModel.offer.rating.count)}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/rating_bar"
+                    app:layout_constraintTop_toTopOf="@id/rating_bar" />
+
+                <TextView
+                    android:id="@+id/text_view_ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ratings"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/text_view_rating_count"
+                    app:layout_constraintTop_toTopOf="@id/rating_bar" />
+
+                <TextView
+                    android:id="@+id/text_view_deal_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{offersViewModel.offer.description}"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_rating_count" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/button_add_deal_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to Cart"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

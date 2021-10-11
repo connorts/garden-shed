@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EcommerceAppChallenge</string>
+    <string name="products">Products</string>
+    <string name="offers">Offers</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="profile">Profile</string>
+</resources>

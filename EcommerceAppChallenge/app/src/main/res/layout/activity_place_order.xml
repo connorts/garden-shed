@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="placeOrderViewModel"
+            type="com.example.ecommerceappchallenge.viewmodel.cart.PlaceOrderActivityViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".view.cart.PlaceOrderActivity">
+
+    <TextView
+        android:id="@+id/text_view_order_confirmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Confirmed!"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_back_to_app"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/transparent"
+        android:text="Keep Shopping"
+        android:textSize="16sp"
+        android:textColor="@color/yellow"
+        android:textStyle="bold|italic"
+        android:onClick="@{()->placeOrderViewModel.keepShopping()}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_order_confirmed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
